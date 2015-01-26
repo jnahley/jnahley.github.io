@@ -1,0 +1,50 @@
+#header{
+  border:black solid 1px;
+  text-align:center;
+  height:100px;
+  clear:both;
+  width:691px;
+}
+
+#sidebar{
+  border:black solid 2px;
+  width: 150px;
+  height:800px;
+  clear:left;
+  margin-top:2px;
+  text-align:center;
+}
+td{
+  height: 50px;
+  text-align:center;
+}
+
+#body{
+  border:solid black 3px;
+  width:529px;
+  height:800px;
+  float:right;
+  position:absolute;
+  margin-left:155px;
+  margin-top:-2px;
+  
+}
+
+#content{
+  width:529px;
+  float:right;
+  position:absolute;
+  margin-left:155px;
+  margin-top:-300px;
+}
+#content  td{
+    border:black solid 1px;
+    height: 75px;
+    border-collapse: collapse;
+    
+}
+
+#namet:hover ~ #namec {
+    color:red;
+}
+
