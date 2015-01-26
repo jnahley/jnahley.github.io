@@ -44,7 +44,7 @@ td{
     
 }
 
-#namet:hover ~ #namec {
+#namet:hover {
     color:red;
 }
 
