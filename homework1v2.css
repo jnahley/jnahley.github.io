@@ -4,7 +4,12 @@
   height:100px;
   clear:both;
   width:691px;
+    text-decoration:underline;
+    background-color:#b8d4d4
 }
+
+
+
 
 #sidebar{
   border:black solid 2px;
@@ -13,13 +18,16 @@
   clear:left;
   margin-top:2px;
   text-align:center;
+    background-color:#476b6b
 }
-td{
-  height: 50px;
+#sidetable td{
+  height: 67px;
   text-align:center;
+    background-color:#b8d4d4;
+    border-radius:3px;
 }
 
-#body{
+#aboutme{
   border:solid black 3px;
   width:529px;
   height:800px;
@@ -27,24 +35,26 @@ td{
   position:absolute;
   margin-left:155px;
   margin-top:-2px;
-  
+  background-color:#b8d4d4
 }
 
 #content{
   width:529px;
   float:right;
   position:absolute;
-  margin-left:155px;
-  margin-top:-300px;
+  margin-left:158px;
+  margin-top:-460px;
 }
 #content  td{
-    border:black solid 1px;
+    border:#E8F0F0 solid 2px;
     height: 75px;
     border-collapse: collapse;
-    
+    text-align:left;
+    background-color:#334C4C
 }
 
-#namet:hover {
-    color:red;
-}
 
+#content td:hover{
+    color:#b8d4d4;
+    font-weight:bold;
+}
