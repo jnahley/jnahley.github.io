@@ -7,6 +7,8 @@
     <script type="text/javascript" src="hw2.js"></script>
 </head>
 <body>
+<div id="top"></div>
+<div id="spacer1"></div>
 <table id="gradDataTable">
     <tr>
         <th>Name</th>
@@ -15,11 +17,15 @@
         <th>GRE:Quantitative</th>
         <th>GRE:Essay</th>
         <th>Recom</th>
-        <th>Total</th>
+        <th>Total*</th>
         <th>Ranking</th>
     </tr>
 </table>    
+<div id="explain">
+    <p>GPA Range: 0-4<br>GRE_V/Q Range: 130-170<br>Essay Range: 0-6</p>
     
+    <p id="equation">*Total=(GPA/4)+[(GRE_V-130)/40]+[(GRE_Q-130)/40]+(Essay/6)</p>
+</div>    
 
 </body>
 
