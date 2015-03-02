@@ -1,0 +1,45 @@
+#titlebar{
+    width:100%;
+    height:150 px;
+    border:solid black 1px;
+}
+#titlebar h1,h3,h4{
+    text-align:center;
+}
+th{
+    border:solid black 2px;
+    text-align: center;
+    border-collapse: collapse;
+}
+td{
+    border:solid black 1px;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+}
+tbody{
+    border-collapse: collapse;
+}
+tr{
+    border-collapse: collapse;
+}
+#table1{
+    margin:auto;
+    border-collapse: collapse;
+}
+
+
+div.bar{
+    display:inline-block;
+    width:20px;
+    height:75px;
+    margin-right:2px;
+    background-color: teal;
+}
+#scatter{
+    width:600px;
+    height:600px;
+    border:solid black 1px;
+}
+

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Homework 3</title>
+    <link rel="stylesheet" href="hw3.css">
+    <script type="text/javascript" src="D3/d3.min.js"></script>
+</head>
+
+    
+<body>
+    <div id="titlebar">
+    <h1>Homework 3</h1><h3>Josh Nahley</h3><h4>URl: http://nces.ed.gov/programs/digest/d12/tables/dt12_460.asp</h4>
+    </div>
+    <div id="table1">
+    </div>
+    <div id="scatter">
+    </div>
+    
+    <script type="text/javascript">
+    var mathSciData;
+    d3.csv("http://localhost:8888/mathSciAll.csv",function(data){
+        
+        mathSciData = data;
+        var columns =["Country","Total Hr/yr", "Math Avg Score","Math Hr/yr","Math %hr","Math/Sci Score Ratio","Math/Sci HR Ratio","Sci Avg Score","Sci Hr/yr","Sci %hr"];
+        var table = d3.select("#table1").append("table");
+        var thead = table.append("thead");
+        var tbody = table.append("tbody");
+        
+        thead.append("tr")
+            .selectAll("th")
+            .data(columns)
+            .enter()
+            .append("th")
+            .text(function(column){return column;});
+        var rows=tbody.selectAll("tr")
+            .data(mathSciData)
+            .enter()
+            .append("tr");
+        var cells = rows.selectAll("td")
+            .data(function(row){
+                return columns.map(function(column){
+                    return {column:column,value: row[column]};
+                });
+            })
+            .enter()
+            .append("td")
+            .text(function(d) {return d.value;});
+        return table;  
+             
+});
+var mathSciData;
+    
+    d3.csv("http://localhost:8888/mathSciRatio.csv",function(data){
+        mathSciData = data;
+        mathSciFunc();
+        
+        data.forEach(function(d) {
+    d["Math/Sci HR Ratio"]= +d["Math/Sci HR Ratio"];
+    d["Math/Sci Score Ratio"]= +d["Math/Sci Score Ratio"];
+            console.log(d);
+        
+        });
+
+});
+    
+function mathSciFunc(){
+console.log(mathSciData);
+
+
+    
+    var w = 500;
+    var h = 100;
+    var svg = d3.select("#scatter")
+    .append("svg")
+    .attr("width", w)
+    .attr("height", h);
+svg.selectAll("circle")
+    .data(mathSciData)
+    .enter()
+    .append("circle")
+    .attr("cx", function(d) {
+			   		return d[0];
+			   })
+    .attr("cy", function(d) {
+			   		return mathSciData.Country;
+			   })
+    .attr("r", 5);
+};
+        
+
+						
+           
+        
+    var country=[];   
+    var msScoreRatio=[];   
+    var msHRRatio=[];
+               
+               
+        d3.csv("http://localhost:8888/mathSciAll.csv",function(data){
+            var keys=Object.keys(data[8]);
+            data.forEach(function(d){
+                msHRRatio.push(d[keys[8]]); 
+            });
+            var keys=Object.keys(data[9]);
+            data.forEach(function(d){
+                msScoreRatio.push(d[keys[9]]); 
+            });
+            var keys=Object.keys(data[0]);
+            data.forEach(function(d){
+                country.push(d[keys[0]]);
+            });
+            console.log(country);    
+            console.log(msScoreRatio);
+            console.log(msHRRatio);
+       });
+       console.log(msHRRatio);
+      
+        
+        var graphData=[
+            {
+                country:0,
+                msHRRatio:0,
+                msScoreRatio:0,
+            }];
+            console.log(graphData);
+            
+
+         
+         for (var i=0;i<msHRRatio.length;i++){
+            graphData[country[i]]=country[i];
+            graphData[msHRRatio[i]]=msHRRatio[i];
+            graphData[msScoreRatio[i]]=msScoreRatio[i];
+         };
+    
+    
+       
+    console.log(graphData);
+        
+        
+               
+                    
+              
+                
+    
+    
+        
+    </script>
+    
+</body>
+
+
+</html>
