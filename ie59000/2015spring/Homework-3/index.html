@@ -19,7 +19,7 @@
     
     <script type="text/javascript">
     var mathSciData;
-    d3.csv("http://localhost:8888/mathSciAll.csv",function(data){
+    d3.csv("mathSciAll.csv",function(data){
         
         mathSciData = data;
         var columns =["Country","Total Hr/yr", "Math Avg Score","Math Hr/yr","Math %hr","Math/Sci Score Ratio","Math/Sci HR Ratio","Sci Avg Score","Sci Hr/yr","Sci %hr"];
@@ -51,7 +51,7 @@
 });
 var mathSciData;
     
-    d3.csv("http://localhost:8888/mathSciRatio.csv",function(data){
+    d3.csv("mathSciRatio.csv",function(data){
         mathSciData = data;
         mathSciFunc();
         
@@ -97,7 +97,7 @@ svg.selectAll("circle")
     var msHRRatio=[];
                
                
-        d3.csv("http://localhost:8888/mathSciAll.csv",function(data){
+        d3.csv("mathSciAll.csv",function(data){
             var keys=Object.keys(data[8]);
             data.forEach(function(d){
                 msHRRatio.push(d[keys[8]]); 
