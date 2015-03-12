@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
   <head>
     <title></title>
@@ -8,7 +8,7 @@
     <h2>Josh Nahley</h2>
     <ul>
       <li>
-        <a href="http://jnahley.github.io/exam_1"/>Exam 1</a>
+        <a href="http://jnahley.github.io/exam_1"/>Exam%201</a>
       </li>
     </ul>
   </body>
