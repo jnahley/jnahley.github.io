@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exam 1 Problem 3</title>
+    <link type="text/css" rel="stylesheet" href="exam1.css">
+    <script type="text/javascript" src="D3/d3.min.js"></script>
+</head>
+
+
+<body>
+<div id="header">
+    <h2>Senior IE Studenter Bar Chart</h2></div>
+<div id="barGraph">
+</div>
+<script type="text/javascript">
+    var margin = {top: 20, right: 20, bottom: 250, left: 70},
+    w = 500 - margin.left - margin.right,
+    h = 700 - margin.top - margin.bottom;
+    var barPadding = 1;
+    
+    
+    d3.json("https://hivelab.org/static/exam1.json", function(error,json){
+        console.log(json);
+        console.log(json[3]);
+        
+        
+       
+       /** 
+       var keys=d3.keys(json[3]);
+            json.forEach(function(d){
+                seniorArray.push(d[keys[3]]); 
+            });
+            
+            console.log(seniorArray);
+            console.log(keys);
+        
+       var values=d3.values(json[3]);
+            json.forEach(function(d){
+                slArray.push(d[values[3]]); 
+            });
+            **/
+        var values=[90,91,46,100,92];
+              console.log(values);
+        var university=["University A","University B","University C","University D","University E"];
+        console.log(university);
+        
+        var xScale=d3.scale.ordinal().domain(university).rangeBands([0,w]);
+        var yScale=d3.scale.linear().domain([0,120]).range([h,0]);
+        var xAxis=d3.svg.axis().scale(xScale).orient("bottom");
+        var yAxis=d3.svg.axis().scale(yScale).orient("left").ticks(5);
+       
+        var svg = d3.select("#barGraph")
+						.append("svg")
+						.attr("width", w + margin.left + margin.right)
+						.attr("height", h + margin.top + margin.bottom)
+                        .attr("transform","translate(" + margin.left + "," + margin.top + ")");
+        
+			svg.selectAll("rect")
+			   .data(values)
+			   .enter()
+			   .append("rect")
+			   .attr("x", function(d, i) {
+			   		return i * (w / values.length);
+			   })
+			   .attr("y", function(d) {
+			   		return h - d;
+			   })
+                .attr("height", function(d) {
+			   		return d;
+			   })
+			   .attr("width", w / values.length - barPadding)
+			   .attr("fill", function(d) {
+					return "rgb(0, 0, " + (d * 10) + ")";
+			   });
+        
+            svg.append("g")
+                .attr("class","axis")
+                .attr("transform","translate(0,"+h+")")
+                .call(xAxis)
+                .selectAll("text")
+                .attr("y",-6)
+                .attr("x",-10)
+                .attr("dx","2em")
+                .attr("transform","rotate(90)")
+                .style("text-anchor","start");
+        
+            svg.append("g")
+                .attr("class","axis")
+                .attr("transform","translate(" + barPadding + ",0)")
+                .call(yAxis);
+               
+            
+			/**svg.selectAll("text")
+			   .data(values)
+			   .enter()
+			   .append("text")
+			   .text(function(d) {
+			   		return d;
+			   })
+               .attr("text-anchor","middle")
+			   .attr("x", function(d, i) {
+			   		return i * (w / values.length)+ (w / values.length - barPadding) / 2;
+			   })
+			   .attr("y", function(d) {
+			   		return h - d;
+			   })
+			   .attr("font-family", "sans-serif")
+			   .attr("font-size", "11px")
+			   .attr("fill", "white"); **/
+    });
+
+    
+
+
+    
+    
+    
+</script>
+    
+</body>
+
+
+
+
+</html>
