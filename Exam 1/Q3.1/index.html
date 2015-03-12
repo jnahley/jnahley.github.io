@@ -45,7 +45,7 @@
         console.log(university);
         
         var xScale=d3.scale.ordinal().domain(university).rangeBands([0,w]);
-        var yScale=d3.scale.linear().domain([0,120]).range([h,0]);
+        var yScale=d3.scale.linear().domain(values).range([h,0]);
         var xAxis=d3.svg.axis().scale(xScale).orient("bottom");
         var yAxis=d3.svg.axis().scale(yScale).orient("left").ticks(5);
        
@@ -63,10 +63,10 @@
 			   		return i * (w / values.length);
 			   })
 			   .attr("y", function(d) {
-			   		return h - d;
+			   		return h - d*3;
 			   })
                 .attr("height", function(d) {
-			   		return d;
+			   		return d*3;
 			   })
 			   .attr("width", w / values.length - barPadding)
 			   .attr("fill", function(d) {
@@ -90,7 +90,7 @@
                 .call(yAxis);
                
             
-			/**svg.selectAll("text")
+			svg.selectAll("text")
 			   .data(values)
 			   .enter()
 			   .append("text")
@@ -102,11 +102,11 @@
 			   		return i * (w / values.length)+ (w / values.length - barPadding) / 2;
 			   })
 			   .attr("y", function(d) {
-			   		return h - d;
+			   		return h - d*3;
 			   })
 			   .attr("font-family", "sans-serif")
-			   .attr("font-size", "11px")
-			   .attr("fill", "white"); **/
+			   .attr("font-size", "20px")
+			   .attr("fill", "white"); 
     });
 
     
