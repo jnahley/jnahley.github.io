@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="ex2Q31.css">
+    <script src="http://d3js.org/d3.v2.js"></script>
+</head>
+<body>
+<div class="canvas"></div>
+<script type="text/javascript">
+ var margin = {top: 20, right: 30, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
+
+var canvas = d3.select(".canvas")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("table")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var headerGrp = canvas.append("thead").attr("class", "headerGrp");
+var bodyGrp = canvas.append("tbody").attr("class", "bodyGrp");
+
+
+var fieldHeight = 30;
+var fieldWidth = 90;
+
+
+var format = d3.time.format("%a %b %d %Y");
+
+
+d3.json("https://hivelab.org/static/exam2.json", function(jsonData){
+
+    console.log(jsonData);
+
+	// create the table header	
+	headerGrp.append("tr").selectAll("th")
+		.data(d3.keys(jsonData[0]))
+	  .enter().append("th")
+		.attr("class", "header")
+		.text(String);
+	
+	// fill the table	
+	// select rows
+    var rows = bodyGrp.selectAll("tr").data(jsonData, 
+    function(d){ return d.ItemNo; })
+        .enter()
+        .append("tr")
+	   ;
+	// create rows	
+	
+	// select cells
+	var cells = rows.selectAll("td").data(function(d){return d3.values(d);})
+		.attr("class", "cell")
+		.enter()
+        .append("td")
+		.text(String)
+        .on("click",function(){
+           var currentColor = "white";
+    
+    return function(){
+        currentColor = currentColor == "white" ? "green" : "white";
+        d3.select(this).style("fill", currentColor);
+    }});
+	
+    
+	
+
+});
+
+
+</script>
+</body>
+
+
+
+
+</html>

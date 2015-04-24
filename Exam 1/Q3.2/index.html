@@ -26,66 +26,32 @@
     
     var barColor = d3.scale.ordinal().range(["red", "orange", "yellow", "green", "blue"]);
 
-    d3.json("https://hivelab.org/static/exam1.json", function(error, json){
+    d3.json("https://hivelab.org/static/exam1.json", function(error, data){
         
-        var jsonAll=[   [
-              {"Year":"Freshman"},
-              {college:"University A",number:120},
-              {college:"University B",number:63},
-              {college:"University C",number:55},
-              {college:"University D",number:124},
-              {college:"University E",number:90}
-            ],
-            [
-              {"Year":"Sophomore"},
-              {college:"University A",number:98},
-              {college:"University B",number:70},
-              {college:"University C",number:40},
-              {college:"University D",number:90},
-              {college:"University E",number:93}
-             ],
-             [
-              {"Year":"Junior"},
-              {college:"University A",number:100},
-              {college:"University B",number:92},
-              {college:"University C",number:48},
-              {college:"University D",number:101},
-              {college:"University E",number:99}
-            ],
-                [
-              {"Year":"Senior"},
-              {college:"University A",number:90},
-              {college:"University B",number:91},
-              {college:"University C",number:46},
-              {college:"University D",number:100},
-              {college:"University E",number:92}
-              ]];
+        
     
-       console.log(jsonAll);
-        
-        barColor.domain(d3.keys(jsonAll[0]).filter(function(key) { 
-            return key !== "college"; 
-        }));
-
-        jsonAll.forEach(function(d) {
-            var y0 = 0;
-            d.number = barColor.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
-            d.total = d.number[d.number.length - 1].y1;
-        });
-
-        console.log(jsonAll);
-    jsonAll.sort(function(a, b) { 
-        return b.total - a.total; 
-        });
-        
-    xScale.domain(jsonAll.map(function(d) { 
-        return d.college; 
-        }));
-    yScale.domain([0, d3.max(jsonAll, function(d) { 
-        return d.total; 
-        })]);   
-        
+       console.log(data);
+       var colleges=[
+           {"name":"University A"},
+           {"name":"University B"},
+           {"name":"University C"},
+           {"name":"University D"},
+           {"name":"University E"},
+       ];
+        var new_data;
+        new_data=Object.keys(data[0]).filter(
+            function(d){
+                return(d!=="Year");
+                }
+                ).map(
+                function(d){
+                    return{
+                        "name":d
+                    }
+                    }
+                );
        
+       console.log(new_data);
     
     var svg = d3.select("#barGraph")
         .append("svg")
